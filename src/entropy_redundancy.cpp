@@ -23,12 +23,24 @@ double calculate_entropy(const string &text) {
     return entropy;
 }
 
-double calculate_redundancy(const string &text, int alphabet_size = 256) {
-    // TODO(student): implement redundancy = log2(N) - H(X)
-    // Hint: use calculate_entropy(text)
-    (void)text;
-    (void)alphabet_size;
-    return -1.0;
+double calculate_redundancy(const string &text, int alphabet_size) {
+    if (text.empty()) {
+        return 0.0;
+    }
+
+    // Đếm số ký tự khác nhau
+    map<char, int> freq;
+    for (char c : text) {
+        freq[c]++;
+    }
+
+    int k = freq.size();  // số ký tự unique trong chuỗi
+
+    double H_real = calculate_entropy(text);
+    double H_max = log2(k);  // entropy tối đa của bảng chữ cái kích thước k
+
+    double redundancy = H_max - H_real;
+    return redundancy;
 }
 
 int main() {
