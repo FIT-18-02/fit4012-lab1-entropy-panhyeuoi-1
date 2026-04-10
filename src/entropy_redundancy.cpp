@@ -23,7 +23,7 @@ double calculate_entropy(const string &text) {
     return entropy;
 }
 
-double calculate_redundancy(string text, int alphabet_size = 26) { {
+double calculate_redundancy(string text, int alphabet_size = 26)  {
     if (text.empty()) {
         return 0.0;
     }
